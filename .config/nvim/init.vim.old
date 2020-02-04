@@ -1,0 +1,141 @@
+"set lines=999 columns=999
+
+set nu!
+
+set runtimepath^=~/.config/nvim/plugin/tagbar-javascript.vim
+
+syntax on
+
+filetype plugin indent on
+
+let delimitMate_expand_cr = 1
+
+set mousemodel=popup
+
+set noswapfile
+set nobackup
+set nowritebackup
+set noundofile
+
+set foldenable
+
+set encoding=UTF-8
+
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1         " JavaScript
+let perl_fold=1               " Perl
+let php_folding=1             " PHP
+let r_syntax_folding=1        " R
+let ruby_fold=1               " Ruby
+let sh_fold_enabled=1         " sh
+let vimsyn_folding='af'       " Vim script
+let xml_syntax_folding=1      " XML
+let cpp_syntax_folding=1
+
+"let g:neocomplete#enable_at_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
+let NERDTreeShowBookmarks=1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+autocmd vimenter * NERDTree
+
+map <F2> :NERDTreeTabsToggle<CR>
+map <F4> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+nmap <F8> :Flisttoggle<CR>
+
+"set background=dark
+"colorscheme solarized8
+"let g:solarized_termcolors=256
+"colorscheme moria
+"colorscheme onedark
+
+noremap <3-LeftMouse> za
+
+map <C-Left> <Esc>:tabprev<CR>
+map <C-Right> <Esc>:tabnext<CR>
+map <C-n> <Esc>:tabnew
+map <C-s> <Esc>:w<CR>
+map <C-q> <Esc>:wq<CR>
+
+inoremap <C-v> <ESC>"+pa
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
+inoremap <C-j> <ESC>
+vnoremap <C-j> <ESC>
+
+set nospell
+set nowrap
+set guioptions+=b
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
+set visualbell
+
+"set guifont=Consolas:h11:cANSI
+"set guifont=Inconsolata_NF:h9:cANSI:qDRAFT
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#show_tab_nr = 1
+let g:airline#extensions#branch#show_tab_type = 1
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:session_autosave = 'no'
+
+set nu
+let g:gitgutter_max_signs=9999
+set statusline+=%{fugitive#statusline()}
+autocmd FocusLost * call feedkeys("\<esc>")
+set tabstop=4
+set shiftwidth=4
+
+colorscheme gentooish
+"set background=dark
+set mouse=a
+hi Normal guibg=NONE ctermbg=NONE
+let g:solarized_termtrans = 1
+
+call plug#begin('~/.config/nvim/plugged')
+
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
